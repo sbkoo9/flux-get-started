@@ -15,7 +15,7 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: nginx-ingress
-    version: 0.4.3
+    version: "0.4.3"
   values:
     ## nginx configuration
     ## Ref: https://github.com/helm/charts/tree/master/stable/nginx-ingress#configuration
