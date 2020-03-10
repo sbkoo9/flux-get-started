@@ -1,0 +1,42 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: nginx-ingress
+  namespace: nginx-ingress
+  annotations:
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.chart-image: semver:~5.0
+    fluxcd.io/locked: "true"
+    fluxcd.io/locked_msg: "Halt updates for now"
+    fluxcd.io/locked_user: "Stefan Prodan <stefan@weave.works>"
+spec:
+  releaseName: nginx-ingress
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: nginx-ingress
+    version: 0.4.3
+  values:
+    ## nginx configuration
+    ## Ref: https://github.com/helm/charts/tree/master/stable/nginx-ingress#configuration
+    controller:
+      service:
+        ## Use Network Load Balancer
+        annotations: {
+          service.beta.kubernetes.io/aws-load-balancer-type: nlb
+        }
+        ## Whitelist office and vpn ip addresses
+        loadBalancerSourceRanges: ["173.56.120.36/32", "23.20.55.67/32"]
+        enableHttp: true
+        enableHttps: true
+        ## Set external traffic policy to: "Local" to preserve source IP on
+        ## providers supporting it
+        ## Ref: https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-typeloadbalancer
+        externalTrafficPolicy: "Local"
+        ports:
+          http: 80
+          https: 443
+        targetPorts:
+          http: http
+          https: https
+        type: LoadBalancer
