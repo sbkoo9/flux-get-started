@@ -1,0 +1,1 @@
+{"jobID":"c7d6685e-6a52-4fda-b856-630546d797f9","spec":{"type":"policy","cause":{"Message":"","User":"Sebon Koo \u003csebon.koo@dailypay.com\u003e"},"spec":{"staging:deployment/queue":{"add":{"locked":"true","locked_msg":"","locked_user":"Sebon Koo \u003csebon.koo@dailypay.com\u003e"},"remove":{}}}},"result":null}
