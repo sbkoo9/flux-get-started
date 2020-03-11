@@ -1,0 +1,59 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: cache
+  namespace: staging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      dpenv-resource: cache
+  serviceName: cache
+  template:
+    metadata:
+      labels:
+        dpenv-resource: cache
+    spec:
+      containers:
+      - image: redis:5.0.4
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          tcpSocket:
+            port: redis
+          timeoutSeconds: 5
+        name: redis
+        ports:
+        - containerPort: 6379
+          name: redis
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          successThreshold: 1
+          tcpSocket:
+            port: redis
+          timeoutSeconds: 1
+        resources: {}
+      terminationGracePeriodSeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cache
+  namespace: staging
+spec:
+  ports:
+  - name: http
+    port: 6379
+    protocol: TCP
+    targetPort: 6379
+  selector:
+    dpenv-resource: cache
+  sessionAffinity: None
+  type: ClusterIP
