@@ -1,0 +1,43 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: queue
+  namespace: staging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      dpenv-resource: queue
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        dpenv-resource: queue
+    spec:
+      containers:
+      - image: redis:5.0.4
+        imagePullPolicy: IfNotPresent
+        name: redis
+        ports:
+        - containerPort: 6379
+          protocol: TCP
+        resources: {}
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: queue
+  namespace: staging
+spec:
+  ports:
+  - name: http
+    port: 6379
+    protocol: TCP
+    targetPort: 6379
+  selector:
+    dpenv-resource: queue
+  sessionAffinity: None
+  type: ClusterIP
