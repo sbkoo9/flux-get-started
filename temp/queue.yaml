@@ -11,7 +11,7 @@ spec:
       dpenv-resource: queue
   template:
     metadata:
-      creationTimestamp: null
+      creationTimestamp:
       labels:
         dpenv-resource: queue
     spec:
