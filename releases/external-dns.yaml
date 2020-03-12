@@ -1,0 +1,30 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: external-dns
+  annotations:
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.chart-image: semver:~5.0
+    fluxcd.io/locked: "true"
+    fluxcd.io/locked_msg: "Halt updates for now"
+spec:
+  releaseName: external-dns
+  chart:
+    repository: https://charts.bitnami.com/bitnami
+    name: "bitnami/external-dns"
+    version: "2.20.5"
+  values:
+    ## K8s resources type to be observed for new DNS entries by ExternalDNS
+    sources:
+      - ingress
+    ## DNS provider where the DNS records will be created. Available providers are:
+    ## - aws, azure, cloudflare, coredns, designate, digitalocoean, google, infoblox, rfc2136
+    provider: aws
+    ## Whether to publish DNS records for ClusterIP services or not (optional)
+    publishInternalServices: true
+    aws:
+      region: "us-east-1"
+    ## Limit possible target zones by zone id (optional)
+    zoneIdFilters: ["ZBMXQNXYFKO7D"]
