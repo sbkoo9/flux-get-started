@@ -1,0 +1,1 @@
+{"jobID":"4057c8a3-cdaf-4320-e7ce-b725a4a1a6b3","spec":{"type":"policy","cause":{"Message":"","User":"Sebon Koo \u003csebon.koo@dailypay.com\u003e"},"spec":{"cert-manager:helmrelease/cert-manager":{"add":{},"remove":{"locked":"true","locked_msg":"true","locked_user":"true"}}}},"result":null}
