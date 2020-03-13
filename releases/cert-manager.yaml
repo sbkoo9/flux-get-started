@@ -6,8 +6,6 @@ metadata:
   namespace: cert-manager
   annotations:
     fluxcd.io/automated: "true"
-    fluxcd.io/locked: "true"
-    fluxcd.io/locked_msg: "Halt updates for now"
 spec:
   releaseName: cert-manager
   chart:
