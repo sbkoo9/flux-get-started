@@ -22,10 +22,10 @@ spec:
       image:
         repository: quay.io/kubernetes-ingress-controller/nginx-ingress-controller
         tag: "0.26.1"
-        # pullPolicy: IfNotPresent
-        # # www-data -> uid 33
-        # runAsUser: 33
-        # allowPrivilegeEscalation: true
+        pullPolicy: IfNotPresent
+        # www-data -> uid 33
+        runAsUser: 33
+        allowPrivilegeEscalation: true
       service:
         ## Use Network Load Balancer
         annotations: {
