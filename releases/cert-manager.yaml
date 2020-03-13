@@ -14,4 +14,3 @@ spec:
     repository: https://charts.jetstack.io
     name: cert-manager
     version: "0.14.0"
-  values:
