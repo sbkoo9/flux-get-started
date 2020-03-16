@@ -1,0 +1,33 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: dailypay-staging-helm-release
+  namespace: staging
+  annotations:
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/chart-image: glob:build-24260
+spec:
+  releaseName: dailypay-staging
+  chart:
+    git: git@github.com:dailypay/dailypay.git
+    path: charts/dailypay
+    ref: feature/helm-chart
+  values:
+    image:
+      repository: 974673539992.dkr.ecr.us-east-1.amazonaws.com/dailypay
+      tag: build-24125
+    replicaCount: 2
+    ingress:
+      enabled: false
+      annotations: {
+        kubernetes.io/ingress.class: nginx,
+        cert-manager.io/cluster-issuer: letsencrypt-production
+      }
+      hosts:
+        - host: www.dailypaystaging.com
+          paths: ['/']
+      tls:
+        - secretName: dailypaystaging-tls
+          hosts:
+            - "*.dailypaystaging.com"
