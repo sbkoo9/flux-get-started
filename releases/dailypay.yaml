@@ -5,7 +5,6 @@ metadata:
   name: dailypay-staging-helm-release
   namespace: staging
   annotations:
-    fluxcd.io/automated: "true"
     filter.fluxcd.io/chart-image: glob:build-24260
 spec:
   releaseName: dailypay-staging
