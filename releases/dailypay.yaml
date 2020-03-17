@@ -12,7 +12,7 @@ spec:
   chart:
     git: git@github.com:dailypay/dailypay.git
     path: charts/dailypay
-    ref: feature/helm-chart
+    ref: master
   values:
     image:
       repository: 974673539992.dkr.ecr.us-east-1.amazonaws.com/dailypay
