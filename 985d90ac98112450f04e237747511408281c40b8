@@ -1,0 +1,1 @@
+{"jobID":"efda1717-e4f7-d96a-9039-b6e9288f4eca","spec":{"type":"policy","cause":{"Message":"","User":"Sebon Koo \u003csebon.koo@dailypay.com\u003e"},"spec":{"staging:helmrelease/dailypay-staging-helm-release":{"add":{"automated":"true"},"remove":{}}}},"result":null}
