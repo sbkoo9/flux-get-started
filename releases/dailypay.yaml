@@ -10,9 +10,9 @@ metadata:
 spec:
   releaseName: dailypay-staging
   chart:
-    git: git@github.com:dailypay/dailypay.git
+    git: git@github.com:dailypay/dailypay
     path: charts/dailypay
-    ref: master
+    ref: feature/helm-chart
   values:
     image:
       repository: 974673539992.dkr.ecr.us-east-1.amazonaws.com/dailypay
