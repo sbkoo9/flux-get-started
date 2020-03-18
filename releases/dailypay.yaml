@@ -6,7 +6,6 @@ metadata:
   namespace: staging
   annotations:
     filter.fluxcd.io/chart-image: glob:build-24260
-    fluxcd.io/automated: 'true'
 spec:
   releaseName: dailypay-staging
   chart:
