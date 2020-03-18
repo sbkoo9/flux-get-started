@@ -19,7 +19,7 @@ spec:
       tag: build-24260
     replicaCount: 2
     ingress:
-      enabled: false
+      enabled: true
       annotations: {kubernetes.io/ingress.class: nginx, cert-manager.io/cluster-issuer: letsencrypt-production}
       hosts:
       - host: www.dailypaystaging.com
