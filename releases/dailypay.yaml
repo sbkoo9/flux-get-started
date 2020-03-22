@@ -16,7 +16,7 @@ spec:
   values:
     image:
       repository: 974673539992.dkr.ecr.us-east-1.amazonaws.com/dailypay
-      tag: build-24537
+      tag: staging-24543
     replicaCount: 2
     ingress:
       enabled: true
