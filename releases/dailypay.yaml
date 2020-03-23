@@ -16,7 +16,7 @@ spec:
   values:
     image:
       repository: 974673539992.dkr.ecr.us-east-1.amazonaws.com/dailypay
-      tag: staging-24615
+      tag: staging-24616
     replicaCount: 2
     env:
     - name: RAILS_ENV
