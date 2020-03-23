@@ -16,8 +16,11 @@ spec:
   values:
     image:
       repository: 974673539992.dkr.ecr.us-east-1.amazonaws.com/dailypay
-      tag: build-24537
+      tag: staging-24543
     replicaCount: 2
+    env:
+      - name: RAILS_ENV
+        value: staging
     ingress:
       enabled: true
       annotations: {kubernetes.io/ingress.class: nginx, cert-manager.io/cluster-issuer: letsencrypt-production}
