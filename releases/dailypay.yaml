@@ -28,7 +28,7 @@ spec:
         type: ClusterIP
         port: 80
     worker:
-      create: true
+      create: false
       replicaCount: 2
       env:
         - name: RAILS_ENV
